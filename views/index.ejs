@@ -1,0 +1,253 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> CMCC SDWAN
+    Login</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"  type="text/css">
+  <!--<link rel="stylesheet" href="/public/stylesheets/login.css" type="text/css">-->
+  <link rel="shortcut icon" href="dist/favicon.png">
+  <link rel="prerender prefetch" href="dist/scripts/82140f06.main.js"/>
+
+</head>
+
+<body>
+
+<div class="login-bg">
+  <div class="container-fluid">
+    <header>
+      <div class="logo-wrapper">
+        <div class="versa-logo1"></div>
+      </div>
+    </header>
+    <div class="login-wrap">
+      <section class="login-wrapper">
+        <div class="inner-wrapper clearfix login-wrapper-2">
+          <div class="title">
+            <div style= "background-image:url('dist//images/versa-logo.png') " class="versa-login-logo"></div>
+            <div class="vertical-divider"> </div>
+            <div class="versa-login-logo-text">
+              <div class="logo-text"> CMCC SDWAN
+              </div>
+            </div>
+          </div>
+
+          <div id="ieNotSupported" class="ie-lbl-txt form-lbl"></div>
+          <form class="form-horizontal" name="login" onsubmit="return validate();" action='j_spring_security_check' method="POST">
+            <div class="login-block-2">
+              <div class="control-group login-input">
+                <label class="control-label label-properties" for="inputEmail"></label>
+                <div class="controls">
+                  <input id="inputEmail" autocomplete="off" class="credentials input-medium login-input input-userName" tabindex="1" type="text" name='j_username' placeholder="User Name" autofocus/>
+                </div>
+              </div>
+              <div class="control-group login-input">
+                <label class="control-label label-properties" for="inputPassword"></label>
+                <div class="controls">
+                  <input id="inputPassword" autocomplete="off" class="credentials input-medium login-input input-userPassword" tabindex="2" type="password" name='j_password' placeholder="Password" onkeypress="return submitEnter(this, event);"/>
+                </div>
+              </div>
+            </div>
+
+            <!--   <div class="versa-text"><h1>Versa Director</h1></div>  -->
+
+            <div class=" error-msg">
+              <label class="label-properties  margin-b-10px error-label" id="error-label">
+
+                Session Expired
+              </label>
+            </div>
+
+            <div class="control-group margin-b">
+              <div class="controls clearfix">
+                <label class="checkbox chkbox-text pull-left"  id="_spring_security_remember_me"><input type="checkbox" name="_spring_security_remember_me"> Keep me logged in</label>
+                <button type="submit" class="btn btn-primary btn-login btn-blue  login-btn" name="submit">Login</button>
+
+
+
+              </div>
+            </div>
+            <div class="controls-link">
+              <a href="dist/../resetpassword" class="link">Forgot Password</a>
+            </div>
+            <div class="control-group">
+
+            </div>
+          </form>
+        </div>
+      </section>
+
+
+    </div>
+    <footer class="login-footer">
+      <p class="clearfix ">
+        COPYRIGHT@DONGFANGTECH
+
+      </p>
+      <!-- <p class="clearfix">
+           <a class="pull-left">Privacy Policy</a>
+           <a class="pull-right">Terms of Use</a>
+       </p> -->
+    </footer>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src=src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var er = '';
+        if (er == "true") {
+            $(".credentials").addClass("error");
+        }
+        document.title = document.title.toLowerCase()
+            .split(' ')
+            .map(function(word) {
+                return word[0].toUpperCase() + word.substr(1);
+            })
+            .join(' ');
+        if (navigator.userAgent.toLowerCase().indexOf('msie') > 0) {
+            $('[placeholder]').focus(function () {
+                var input = $(this);
+                if (input.val() == input.attr('placeholder')) {
+                    input.val('');
+                    input.removeClass('placeholder');
+                }
+            }).blur(function () {
+                var input = $(this);
+                if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                    input.addClass('placeholder');
+                    input.val(input.attr('placeholder'));
+
+                }
+            }).blur().parents('form').submit(function () {
+                $(this).find('[placeholder]').each(function () {
+                    var input = $(this);
+                    if (input.val() == input.attr('placeholder')) {
+                        input.val('');
+                    }
+                })
+            });
+        }
+        if (getUrlVars()['logout']) {
+            localStorage.setItem("notificationsDisabled", 'false');
+        }
+    });
+    function validate() {
+        if (!$("[name='j_username']").val()) {
+            $("#error-label").text("Enter Username");
+            return false;
+        } else if (!$("[name='j_password']").val()) {
+            $("#error-label").text("Enter Password");
+            return false;
+        } else {
+            $("[name='j_username']").val().replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return true;
+        }
+    }
+
+    function submitEnter(field, e) {
+        var keycode;
+        if (window.event) {
+            keycode = window.event.keyCode;
+        } else if (e) {
+            keycode = e.which;
+        } else {
+            return true;
+        }
+
+        if (keycode == 13) {
+            $('.login-btn').click();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // Read a page's GET URL variables and return them as an associative array.
+    function getUrlVars()
+    {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+    //check for IE
+    function GetIEVersion() {
+        var sAgent = window.navigator.userAgent;
+        var Idx = sAgent.indexOf("MSIE");
+
+        // If IE, return version number.
+        if (Idx > 0)
+            return parseInt(sAgent.substring(Idx+ 5, sAgent.indexOf(".", Idx)));
+
+        // If IE 11 then look for Updated user agent string.
+        else if (!!navigator.userAgent.match(/Trident\/7\./))
+            return 11;
+
+        else
+            return 0; //It is not IE
+    }
+    function GetChromeVersion() {
+        var version = navigator.userAgent;
+        var versionVal =version.split('Chrome/')[1];
+        if( typeof versionVal != 'undefined' ){
+            versionVal = Number(versionVal.split('.')[0]);
+            return versionVal;
+        }
+    }
+    function GetFirefoxVersion() {
+        var version = navigator.userAgent;
+        var versionVal =version.split('Firefox/')[1];
+        if( typeof versionVal != 'undefined' ){
+            versionVal = Number(versionVal.split('.')[0]);
+            return versionVal;
+        }
+    }
+
+
+    if (GetIEVersion() > 0)
+    {
+        $('#ieNotSupported').text("This browser is not supported. Please use Chrome or Firefox");
+    }
+    else if( navigator.userAgent.toLowerCase().indexOf('chrome') > -1 && GetChromeVersion() < 36  )
+    {
+        $('#ieNotSupported').text("In order to continue using Director, please update your browser to at least Chrome version 36");
+    }
+    else if( navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && GetFirefoxVersion() < 34  )
+    {
+        $('#ieNotSupported').text("In order to continue using Director, please update your browser to at least Firefox version34");
+    }
+
+</script>
+</body>
+</html>
