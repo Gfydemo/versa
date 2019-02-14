@@ -136,7 +136,6 @@
                 if (input.val() == '' || input.val() == input.attr('placeholder')) {
                     input.addClass('placeholder');
                     input.val(input.attr('placeholder'));
-
                 }
             }).blur().parents('form').submit(function () {
                 $(this).find('[placeholder]').each(function () {

@@ -32,7 +32,6 @@ router.post('/login', function(req, res, next) {
     };
 
     const request = https.request(options, (response) => {
-        console.log('状态码:', response.statusCode)
         console.log('请求头:', response.headers)
         let result = response.headers.location.split('?')[1]
         if (result == undefined) {
